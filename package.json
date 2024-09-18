@@ -1,0 +1,22 @@
+{
+  "name": "@cs-magic/exts_chrome_claude-enhancer",
+  "packageManager": "yarn@4.4.0",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@cs-magic/tools": "workspace:^",
+    "@types/chrome": "^0.0.270",
+    "@types/html2canvas": "^1.0.0",
+    "jszip": "^3.10.1",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.94.0"
+  },
+  "dependencies": {
+    "@cs-magic/common-frontend": "workspace:^",
+    "@cs-magic/shadcn": "workspace:^",
+    "html2canvas": "^1.4.1",
+    "modern-screenshot": "^4.4.39"
+  }
+}
