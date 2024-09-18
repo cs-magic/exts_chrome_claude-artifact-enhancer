@@ -3,7 +3,7 @@ import { domToPng } from "modern-screenshot";
 
 export const element2png = async (
   element: HTMLElement,
-  approach: "html2canvas" | "modern-screenshot",
+  approach: "html2canvas" | "modern-screenshot" = "modern-screenshot",
   filename = "screenshot.png",
 ) => {
   console.log("-- element2png start");
