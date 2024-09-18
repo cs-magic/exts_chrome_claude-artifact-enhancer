@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="svg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="128" height="128" fill="url(#bg-gradient)"/>
+  
+  <g transform="translate(24, 24)">
+    <path d="M0,16 C0,7.163444 7.163444,0 16,0 L64,0 C72.836556,0 80,7.163444 80,16 L80,64 C80,72.836556 72.836556,80 64,80 L16,80 C7.163444,80 0,72.836556 0,64 L0,16 Z" fill="url(#svg-gradient)"/>
+    
+    <path d="M20,20 L60,20 L60,60 L20,60 Z" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <path d="M30,30 L50,30 M30,40 L50,40 M30,50 L50,50" stroke="#ffffff" stroke-width="2"/>
+    
+    <text x="40" y="72" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">SVG</text>
+    
+    <circle cx="15" cy="15" r="2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="65" cy="15" r="2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="15" cy="65" r="2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="65" cy="65" r="2" fill="#ffffff" opacity="0.7"/>
+  </g>
+</svg>
