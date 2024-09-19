@@ -25,11 +25,11 @@
   "content_scripts": [
     {
       "matches": ["https://claude.ai/*"],
-      "js": ["main.js"]
+      "js": ["main.js", "vendors.js", "runtime.js"]
     },
     {
       "matches": ["https://www.claudeusercontent.com/*"],
-      "js": ["iframe.js"],
+      "js": ["iframe.js", "vendors.js", "runtime.js"],
       "all_frames": true
     }
   ],
