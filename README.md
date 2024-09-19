@@ -7,7 +7,7 @@
 
 ## Usage
 
-1. **download**: visit [Release Page](https://github.com/cs-magic/exts_chrome_chatbot-exporter/release) and download the latest / stable `chatbot-exporter_....zip` file
+1. **download**: visit [Release Page](https://github.com/cs-magic/exts_chrome_claude-enhancer/release) and download the latest / stable zip file
 2. **install**: visit Chrome Extensions Page (chrome://extensions), enable the development mode, and load the unpacked extension
 3. **run**: visit https://claude.ai
 4. **use**:
