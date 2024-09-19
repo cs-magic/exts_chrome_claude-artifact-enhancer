@@ -1,5 +1,5 @@
 import html2canvas from "html2canvas";
-import { domToPng } from "modern-screenshot";
+import { domToJpeg, domToPng } from "modern-screenshot";
 
 // Function to get the maximum width based on viewport
 function getMaxWidth() {
@@ -17,7 +17,7 @@ export const element2png = async (
   element: HTMLElement,
   {
     approach = "modern-screenshot",
-    filename = "screenshot.png",
+    filename = "screenshot",
     backgroundColor = "white",
   }: {
     approach: "html2canvas" | "modern-screenshot";
@@ -34,11 +34,13 @@ export const element2png = async (
     case "html2canvas":
       const canvas = await html2canvas(element, {
         logging: true,
+        allowTaint: true,
         useCORS: true,
         // scrollY: -window.scrollY,
         height: element.scrollHeight,
         windowHeight: element.scrollHeight,
         backgroundColor: backgroundColor, // chatgpt (#171717)
+        scale: 2,
       });
 
       // Crop the canvas if necessary
@@ -62,12 +64,16 @@ export const element2png = async (
       //   );
       //   data = croppedCanvas.toDataURL("image/png");
       // } else
-      data = canvas.toDataURL("image/png");
+      data = canvas.toDataURL("image/jpeg");
 
       break;
 
     case "modern-screenshot":
-      data = await domToPng(element, {});
+      data = await domToJpeg(element, {
+        scale: 1,
+        quality: 0.7,
+        backgroundColor: backgroundColor,
+      });
       break;
   }
 
