@@ -1,16 +1,18 @@
-# Claude Enhancer V0.4.1 (Chrome Extension)
 
-![logo.svg](assets/logo.svg)
+<div align="center">
+  <img src="./assets/logo.svg" alt="logo" width="128" height="128">
+  <h1>Claude Enhancer</h1>
+  <blockquote>Your Helpful Artifact Enhancer. </blockquote>
+</div>
 
 ## Usage
 
-- Approach 1. fork this repo, and in [Chrome Extension](chrome://extensions/) page Load unpacked at the `dist` folder
-- Approach 2. todo: download on GitHub release page
-- Approach 3. todo: install directly in google plugin market
+1. **download**: visit [Release Page](https://github.com/cs-magic/exts_chrome_chatbot-exporter/release) and download the latest / stable `chatbot-exporter_....zip` file
+2. **install**: visit Chrome Extensions Page (chrome://extensions), enable the development mode, and load the unpacked extension
+3. **run**: visit https://claude.ai
+4. **use**:
 
-## Effect
-
-![img.png](assets/v0.3.0-artifact.png)
+    ![img.png](assets/v0.3.0-artifact.png)
 
 ## Motivation
 
@@ -22,12 +24,13 @@ So I spent a whole day developing this tiny extension in order to save your day.
 
 Enjoy it!
 
-## Todo
+## Release
 
-- [x]: feat: poe supports artifact (SVG-Copilot can do this)
-- [x]: fix: `SecurityError: Failed to execute 'toBlob' on 'HTMLCanvasElement': Tainted canvases may not be exported.
-at img.onload (`
-- [x]: fix the onMouseOut on `svg2png`
-- [x]: feat: download with svg together
-- [x]: fix when svg content changed
-- [x]: fix when generating new image
+### v0.1.0_beta.0_2024-09-19
+
+- [x] feat: poe supports artifact (SVG-Copilot can do this)
+- [x] feat: download with svg together
+- [x] fixed: `SecurityError: Failed to execute 'toBlob' on 'HTMLCanvasElement': Tainted canvases may not be exported. at img.onload (`
+- [x] fixed: the onMouseOut on `svg2png`
+- [x] fixed: when svg content changed
+- [x] fixed: when generating new image
