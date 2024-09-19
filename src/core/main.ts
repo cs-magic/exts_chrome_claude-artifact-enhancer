@@ -42,8 +42,10 @@ const observer = new MutationObserver(() => {
       void element2png(
         document.querySelector(".sticky.bottom-0")
           .previousElementSibling as HTMLElement,
-        "modern-screenshot",
-        `${new Date().toISOString().split("T")[0]} - chat-messages.png`,
+        {
+          approach: "modern-screenshot",
+          filename: `${new Date().toISOString().split("T")[0]} - chat-messages.png`,
+        },
       );
     },
   );

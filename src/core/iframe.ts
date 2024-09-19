@@ -17,11 +17,10 @@ window.addEventListener("message", function (event) {
     case action.mainRequestIframeCapture:
       console.log("-- iframe capturing");
 
-      void element2png(
-        document.body,
-        "modern-screenshot",
-        "iframe-screenshot.png",
-      );
+      void element2png(document.body, {
+        approach: "modern-screenshot",
+        filename: "iframe-screenshot.png",
+      });
 
       break;
   }
