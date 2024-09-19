@@ -1,0 +1,58 @@
+name: Release Google Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Get package info and release type
+        id: package_info
+        run: |
+          echo "name=$(node -p "require('./manifest.json').name")" >> $GITHUB_OUTPUT
+          echo "version=$(echo ${{ github.ref }} | sed -E 's/.*v([0-9]+\.[0-9]+\.[0-9]+).*/\1/')" >> $GITHUB_OUTPUT
+          RELEASE_TYPE=$(echo ${{ github.ref }} | sed -E 's/.*v[0-9]+\.[0-9]+\.[0-9]+_?(.*)$/\1/')
+          echo "type=${RELEASE_TYPE:-stable}" >> $GITHUB_OUTPUT
+
+      - name: Set release name
+        id: release_name
+        run: |
+          echo "name=${{ steps.package_info.outputs.name }}_v${{ steps.package_info.outputs.version }}_${{ steps.package_info.outputs.type }}_$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "zip_name=$RELEASE_NAME.zip" >> $GITHUB_OUTPUT
+
+      - name: Zip Extension
+        run: |
+          mv dist ${{ steps.release_name.outputs.name }}
+          zip -r ${{ steps.release_name.outputs.zip_name }} ${{ steps.release_name.outputs.name }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ steps.release_name.outputs.name }}
+          draft: false
+          prerelease: ${{ steps.package_info.outputs.type != 'stable' }}
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ steps.release_name.outputs.zip_name }}
+          asset_name: ${{ steps.release_name.outputs.name }}.zip
+          asset_content_type: application/zip
