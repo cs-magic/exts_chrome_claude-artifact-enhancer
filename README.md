@@ -1,8 +1,6 @@
-# Claude Enhancer V0.3.0 (Chrome Extension)
+# Claude Enhancer V0.4.1 (Chrome Extension)
 
-> The Enhancer for Claude (and other popular AIGC products).
->
-> To be continued ...
+![logo.svg](assets/logo.svg)
 
 ## Usage
 
