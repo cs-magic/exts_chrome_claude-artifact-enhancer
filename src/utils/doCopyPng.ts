@@ -1,4 +1,4 @@
-import { svgString2pngBlob } from "./svgString2pngBlob";
+import { svgString2pngBlob } from "packages_frontend/common/src/svgString2pngBlob";
 import { blob2clipboard } from "./blob2clipboard";
 
 export const doCopyPng = async () => {

@@ -1,6 +1,6 @@
 import { config } from "../config";
 import JSZip from "jszip";
-import { svgString2pngBlob } from "./svgString2pngBlob";
+import { svgString2pngBlob } from "packages_frontend/common/src/svgString2pngBlob";
 
 export async function svgString2zip(
   svgString: string,

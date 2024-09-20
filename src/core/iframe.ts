@@ -1,7 +1,7 @@
 import { action } from "../utils/const";
 import { config } from "../config";
 import { Message } from "../utils/message";
-import { element2png } from "../utils/element2png";
+import { element2image } from "src/utils/element2image";
 
 console.log("IFrame script loaded");
 
@@ -17,7 +17,7 @@ window.addEventListener("message", function (event) {
     case action.mainRequestIframeCapture:
       console.log("-- iframe capturing");
 
-      void element2png(document.body, {
+      void element2image(document.body, {
         approach: "modern-screenshot",
         filename: "iframe-screenshot.png",
       });
