@@ -7,15 +7,12 @@
 //    "rootDir": "src",
 //    "outDir": "dist",
 //    "tsBuildInfoFile": "dist/.tsbuildinfo",
-//    "baseUrl": ".",
-//    "paths": {
-//      "@/*": [
-//        "./src/*",
-//        "./public/*",
-//        "../../assets/*",
-//        "../../*"
-//      ]
-//    },
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*",
+      ]
+    },
     "lib": ["es2015", "dom",  "dom.iterable"],
     "types": ["chrome"],
 

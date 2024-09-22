@@ -1,7 +1,7 @@
+import { Message } from "@/types/message";
 import { action, IFRAME_URL } from "../utils/const";
-import { handleArtifact } from "../utils/handleArtifact";
-import { Message } from "@cs-magic/common/src/message";
 import { downloadImage } from "../utils/downloadImage";
+import { handleArtifact } from "../utils/handleArtifact";
 
 console.log("Main script loaded");
 
