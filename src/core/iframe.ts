@@ -1,6 +1,6 @@
 import { action } from "../utils/const";
 import { config } from "../config";
-import { Message } from "../utils/message";
+import { Message } from "@cs-magic/common/src/message";
 import { element2image } from "src/utils/element2image";
 
 console.log("IFrame script loaded");

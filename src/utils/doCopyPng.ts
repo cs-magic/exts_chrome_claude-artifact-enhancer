@@ -1,5 +1,5 @@
 import { svgString2pngBlob } from "packages_frontend/common/src/svgString2pngBlob";
-import { blob2clipboard } from "./blob2clipboard";
+import { blob2clipboard } from "packages_frontend/common/src/blob2clipboard";
 
 export const doCopyPng = async () => {
   document.querySelector(".fixed .sticky h3").textContent;
