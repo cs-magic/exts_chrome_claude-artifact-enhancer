@@ -1,3 +1,5 @@
+release/*
+
 # we should include the dist for end-side users
 !dist
 

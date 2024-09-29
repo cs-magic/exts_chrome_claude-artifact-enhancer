@@ -11,7 +11,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@cs-magic/shadcn/dist/ui/dropdown-menu";
+} from "@cs-magic/shadcn/ui/dropdown-menu";
 import {
   ImageDown,
   Images,
