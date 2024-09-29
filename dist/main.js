@@ -39,8 +39,8 @@ const config = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 498);
-/* harmony import */ var _utils_handleArtifact__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/handleArtifact */ 357);
-/* harmony import */ var _utils_downloadImage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/downloadImage */ 508);
+/* harmony import */ var _utils_downloadImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/downloadImage */ 508);
+/* harmony import */ var _utils_handleArtifact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/handleArtifact */ 357);
 
 
 
@@ -54,7 +54,7 @@ window.addEventListener("message", (event) => {
             const img = new Image();
             img.src = message.data;
             img.onload = function () {
-                (0,_utils_downloadImage__WEBPACK_IMPORTED_MODULE_2__.downloadImage)(img.src, "screenshot.png");
+                (0,_utils_downloadImage__WEBPACK_IMPORTED_MODULE_1__.downloadImage)(img.src, "screenshot.png");
             };
             break;
         }
@@ -66,35 +66,9 @@ window.addEventListener("message", (event) => {
     }
 });
 const observer = new MutationObserver(() => {
-    void (0,_utils_handleArtifact__WEBPACK_IMPORTED_MODULE_1__.handleArtifact)();
+    void (0,_utils_handleArtifact__WEBPACK_IMPORTED_MODULE_2__.handleArtifact)();
 });
 observer.observe(document.body, { subtree: true, childList: true });
-
-
-/***/ }),
-
-/***/ 914:
-/*!*************************************!*\
-  !*** ./src/utils/blob2clipboard.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   blob2clipboard: () => (/* binding */ blob2clipboard)
-/* harmony export */ });
-async function blob2clipboard(blob) {
-    try {
-        const clipboardItem = new ClipboardItem({ "image/png": blob });
-        await navigator.clipboard.write([clipboardItem]);
-        // todo: use toast
-        // alert("PNG copied to clipboard!");
-    }
-    catch (error) {
-        console.error("Error copying PNG to clipboard:", error);
-        alert("PNG failed to copy to clipboard!");
-    }
-}
 
 
 /***/ }),
@@ -157,8 +131,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   doCopyPng: () => (/* binding */ doCopyPng)
 /* harmony export */ });
-/* harmony import */ var _svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./svgString2pngBlob */ 976);
-/* harmony import */ var _blob2clipboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blob2clipboard */ 914);
+/* harmony import */ var _cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/blob2clipboard */ 443);
+/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 567);
 
 
 const doCopyPng = async () => {
@@ -166,8 +140,9 @@ const doCopyPng = async () => {
     const svgString = window.svgString;
     if (!svgString)
         return alert("no svgString now");
-    const pngBlog = await (0,_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__.svgString2pngBlob)(svgString);
-    void (0,_blob2clipboard__WEBPACK_IMPORTED_MODULE_1__.blob2clipboard)(pngBlog);
+    const svgBlob = (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__.svgString2svgBlob)(svgString);
+    const pngBlog = await (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__.svgBlob2pngBlob)(svgBlob);
+    void (0,_cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_0__.blob2clipboard)(pngBlog);
 };
 
 
@@ -286,44 +261,6 @@ ${svgString}
 
 /***/ }),
 
-/***/ 976:
-/*!****************************************!*\
-  !*** ./src/utils/svgString2pngBlob.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   svgString2pngBlob: () => (/* binding */ svgString2pngBlob)
-/* harmony export */ });
-function svgString2pngBlob(svgString, ppi = 320) {
-    return new Promise((resolve, reject) => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
-        const url = URL.createObjectURL(svgBlob);
-        const img = new Image();
-        img.onload = () => {
-            const scale = ppi / 72; // Default PPI for SVG is 72
-            canvas.width = img.width * scale;
-            canvas.height = img.height * scale;
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob((blob) => {
-                URL.revokeObjectURL(url);
-                resolve(blob);
-            }, "image/png");
-        };
-        img.onerror = (err) => {
-            URL.revokeObjectURL(url);
-            reject(err);
-        };
-        img.src = url;
-    });
-}
-
-
-/***/ }),
-
 /***/ 799:
 /*!************************************!*\
   !*** ./src/utils/svgString2zip.ts ***!
@@ -334,15 +271,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   svgString2zip: () => (/* binding */ svgString2zip)
 /* harmony export */ });
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config */ 461);
+/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 567);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jszip */ 842);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _svgString2pngBlob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./svgString2pngBlob */ 976);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 461);
 
 
 
-async function svgString2zip(svgString, fileName, ppi = _config__WEBPACK_IMPORTED_MODULE_0__.config.png.export.ppi.default) {
-    const pngBlob = (0,_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_2__.svgString2pngBlob)(svgString, ppi);
+async function svgString2zip(svgString, fileName, ppi = _config__WEBPACK_IMPORTED_MODULE_2__.config.png.export.ppi.default) {
+    const svgBlob = (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__.svgString2svgBlob)(svgString);
+    const pngBlob = (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__.svgBlob2pngBlob)(svgBlob, ppi);
     // Create ZIP file
     const zip = new (jszip__WEBPACK_IMPORTED_MODULE_1___default())();
     zip.file(`${fileName}.svg`, svgString);
@@ -392,6 +330,32 @@ const waitParentElement = () => new Promise((resolve) => {
 
 /***/ }),
 
+/***/ 443:
+/*!*************************************************************!*\
+  !*** ../../packages_frontend/common/dist/blob2clipboard.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   blob2clipboard: () => (/* binding */ blob2clipboard)
+/* harmony export */ });
+async function blob2clipboard(blob) {
+    try {
+        const clipboardItem = new ClipboardItem({ "image/png": blob });
+        await navigator.clipboard.write([clipboardItem]);
+        // todo: use toast
+        // alert("PNG copied to clipboard!");
+    }
+    catch (error) {
+        console.error("Error copying PNG to clipboard:", error);
+        alert("PNG failed to copy to clipboard!");
+    }
+}
+//# sourceMappingURL=blob2clipboard.js.map
+
+/***/ }),
+
 /***/ 491:
 /*!******************************************************!*\
   !*** ../../packages_frontend/common/dist/str2ele.js ***!
@@ -411,6 +375,45 @@ function str2ele(str) {
     return element.firstElementChild;
 }
 //# sourceMappingURL=str2ele.js.map
+
+/***/ }),
+
+/***/ 567:
+/*!****************************************************************!*\
+  !*** ../../packages_frontend/common/dist/svgString2pngBlob.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   svgBlob2pngBlob: () => (/* binding */ svgBlob2pngBlob),
+/* harmony export */   svgString2svgBlob: () => (/* binding */ svgString2svgBlob)
+/* harmony export */ });
+const svgString2svgBlob = (svgString) => new Blob([svgString], { type: "image/svg+xml" });
+function svgBlob2pngBlob(svgBlob, ppi = 320) {
+    return new Promise((resolve, reject) => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const url = URL.createObjectURL(svgBlob);
+        const img = new Image();
+        img.onload = () => {
+            const scale = ppi / 72; // Default PPI for SVG is 72
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob((blob) => {
+                URL.revokeObjectURL(url);
+                resolve(blob);
+            }, "image/png");
+        };
+        img.onerror = (err) => {
+            URL.revokeObjectURL(url);
+            reject(err);
+        };
+        img.src = url;
+    });
+}
+//# sourceMappingURL=svgString2pngBlob.js.map
 
 /***/ })
 

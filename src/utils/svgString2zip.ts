@@ -1,13 +1,17 @@
-import { config } from "../config";
+import {
+  svgBlob2pngBlob,
+  svgString2svgBlob,
+} from "@cs-magic/common-frontend/svgString2pngBlob";
 import JSZip from "jszip";
-import { svgString2pngBlob } from "@cs-magic/common-frontend/svgString2pngBlob";
+import { config } from "../config";
 
 export async function svgString2zip(
   svgString: string,
   fileName: string,
   ppi = config.png.export.ppi.default,
 ) {
-  const pngBlob = svgString2pngBlob(svgString, ppi);
+  const svgBlob = svgString2svgBlob(svgString);
+  const pngBlob = svgBlob2pngBlob(svgBlob, ppi);
 
   // Create ZIP file
   const zip = new JSZip();

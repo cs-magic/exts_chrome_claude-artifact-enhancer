@@ -45,7 +45,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ steps.release_name.outputs.name }}
           draft: false
-          prerelease: ${{ steps.package_info.outputs.type != 'stable' }}
+          prerelease: false # ${{ steps.package_info.outputs.type != 'stable' }}
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1

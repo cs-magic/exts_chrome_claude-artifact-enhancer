@@ -38,9 +38,9 @@ const config = {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 498);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ 461);
-/* harmony import */ var _utils_element2png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/element2png */ 192);
+/* harmony import */ var _cs_magic_common_frontend_element2image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/element2image */ 589);
+/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/const */ 498);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 461);
 
 
 
@@ -52,9 +52,9 @@ window.addEventListener("message", function (event) {
     const element = document.documentElement;
     console.log({ element });
     switch (message.type) {
-        case _utils_const__WEBPACK_IMPORTED_MODULE_0__.action.mainRequestIframeCapture:
+        case _utils_const__WEBPACK_IMPORTED_MODULE_1__.action.mainRequestIframeCapture:
             console.log("-- iframe capturing");
-            void (0,_utils_element2png__WEBPACK_IMPORTED_MODULE_2__.element2png)(document.body, {
+            void (0,_cs_magic_common_frontend_element2image__WEBPACK_IMPORTED_MODULE_0__.element2image)(document.body, {
                 approach: "modern-screenshot",
                 filename: "iframe-screenshot.png",
             });
@@ -64,10 +64,10 @@ window.addEventListener("message", function (event) {
 const observer = new MutationObserver((mutations, observer) => {
     for (const svgElement of document.querySelectorAll("svg")) {
         const { width, height } = svgElement.getBBox();
-        if (width < _config__WEBPACK_IMPORTED_MODULE_1__.config.svg.export.width.min)
+        if (width < _config__WEBPACK_IMPORTED_MODULE_2__.config.svg.export.width.min)
             continue;
         window.parent.postMessage({
-            type: _utils_const__WEBPACK_IMPORTED_MODULE_0__.action.returnSVG,
+            type: _utils_const__WEBPACK_IMPORTED_MODULE_1__.action.returnSVG,
             data: new XMLSerializer().serializeToString(svgElement),
         }, "*");
     }
@@ -125,21 +125,23 @@ const lucideArrowBigDownDashSvgString = `<svg xmlns="http://www.w3.org/2000/svg"
 
 /***/ }),
 
-/***/ 192:
-/*!**********************************!*\
-  !*** ./src/utils/element2png.ts ***!
-  \**********************************/
+/***/ 589:
+/*!************************************************************!*\
+  !*** ../../packages_frontend/common/dist/element2image.js ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   element2png: () => (/* binding */ element2png)
+/* harmony export */   element2image: () => (/* binding */ element2image),
+/* harmony export */   svgElement2svgString: () => (/* binding */ svgElement2svgString)
 /* harmony export */ });
 /* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2canvas */ 317);
 /* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var modern_screenshot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! modern-screenshot */ 615);
 
-
+ // Function to get the maximum width based on viewport
+const svgElement2svgString = (svg) => new XMLSerializer().serializeToString(svg);
 // Function to get the maximum width based on viewport
 function getMaxWidth() {
     if (window.innerWidth >= 1280) {
@@ -153,7 +155,7 @@ function getMaxWidth() {
     }
     return window.innerWidth; // For smaller screens, use full width
 }
-const element2png = async (element, { approach = "modern-screenshot", filename = "screenshot", backgroundColor = "white", }) => {
+const element2image = async (element, { approach = "modern-screenshot", filename = "screenshot", backgroundColor = "white", format = "jpeg", }) => {
     console.log("-- element2png start");
     let data;
     const maxWidth = getMaxWidth();
@@ -163,8 +165,7 @@ const element2png = async (element, { approach = "modern-screenshot", filename =
             const canvas = await html2canvas__WEBPACK_IMPORTED_MODULE_0___default()(element, {
                 logging: true,
                 allowTaint: true,
-                useCORS: true,
-                // scrollY: -window.scrollY,
+                useCORS: true, // scrollY: -window.scrollY,
                 height: element.scrollHeight,
                 windowHeight: element.scrollHeight,
                 backgroundColor: backgroundColor, // chatgpt (#171717)
@@ -194,8 +195,8 @@ const element2png = async (element, { approach = "modern-screenshot", filename =
             data = canvas.toDataURL("image/jpeg");
             break;
         case "modern-screenshot":
-            data = await (0,modern_screenshot__WEBPACK_IMPORTED_MODULE_1__.domToJpeg)(element, {
-                scale: 1,
+            data = await (0,modern_screenshot__WEBPACK_IMPORTED_MODULE_1__.domToDataUrl)(element, {
+                scale: 2,
                 quality: 0.7,
                 backgroundColor: backgroundColor,
             });
@@ -207,7 +208,7 @@ const element2png = async (element, { approach = "modern-screenshot", filename =
     link.click();
     console.log("-- element2png end");
 };
-
+//# sourceMappingURL=element2image.js.map
 
 /***/ })
 
