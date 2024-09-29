@@ -45,7 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ steps.release_name.outputs.name }}
+          release_name: ${{ steps.release_name.outputs.version }}
           draft: false
           prerelease: false # ${{ steps.package_info.outputs.type != 'stable' }}
 
@@ -56,5 +56,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./${{ steps.release_name.outputs.zip_name }}
-          asset_name: ${{ steps.release_name.outputs.version }}.zip
+          asset_name: ${{ steps.release_name.outputs.name }}.zip
           asset_content_type: application/zip
