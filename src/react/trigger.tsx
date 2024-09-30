@@ -21,7 +21,7 @@ import {
   PlusCircle,
   UserPlus,
 } from "lucide-react";
-import CSMagicBanner from "../../../../assets/branding/cs-magic/cs-magic_banner_white.jpg";
+import CSMagicBanner from "assets/branding/neurora/cs-magic_banner_white.jpg";
 import { doDownloadZip } from "../utils/doDownloadZip";
 import { doCopyPng } from "../utils/doCopyPng";
 
