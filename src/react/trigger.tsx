@@ -22,8 +22,8 @@ import {
   UserPlus,
 } from "lucide-react";
 import CSMagicBanner from "assets/branding/neurora/cs-magic_banner_white.jpg";
-import { doDownloadZip } from "../utils/doDownloadZip";
-import { doCopyPng } from "../utils/doCopyPng";
+import { doDownloadZip } from "src/utils/doDownloadZip";
+import { doCopyPng } from "src/utils/doCopyPng";
 
 console.log({ CSMagicBanner });
 

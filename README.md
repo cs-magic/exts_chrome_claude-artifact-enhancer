@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="./assets/logo.svg" alt="logo" width="128" height="128">
+  <img src="assets/logo.svg" alt="logo" width="128" height="128">
   <h1>Claude Artifact Enhancer</h1>
   <blockquote>Your Helpful Claude Artifact Enhancer. </blockquote>
 </div>

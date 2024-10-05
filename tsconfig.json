@@ -7,10 +7,10 @@
 //    "rootDir": "src",
 //    "outDir": "dist",
 //    "tsBuildInfoFile": "dist/.tsbuildinfo",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": [
-        "./src/*",
+        "./src/*"
       ]
     },
     "lib": ["es2015", "dom",  "dom.iterable"],
@@ -25,7 +25,7 @@
     "checkJs": false,  // 不对 JS 文件进行类型检查
     // 不生成乱七八糟的js
     "declarationMap": false,
-    "declaration": false,
+    "declaration": false
 //    "noImplicitAny": false, // 还是禁止这个的好，代码稳健性会高很多
   },
   "include": [

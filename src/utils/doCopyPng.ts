@@ -1,8 +1,8 @@
-import { blob2clipboard } from "@cs-magic/common-frontend/blob2clipboard";
+import { blob2clipboard } from "@cs-magic/common-frontend/dist/blob2clipboard";
 import {
   svgBlob2pngBlob,
   svgString2svgBlob,
-} from "@cs-magic/common-frontend/svgString2pngBlob";
+} from "@cs-magic/common-frontend/dist/svgString2pngBlob";
 
 export const doCopyPng = async () => {
   document.querySelector(".fixed .sticky h3").textContent;

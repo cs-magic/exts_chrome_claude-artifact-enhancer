@@ -1,5 +1,5 @@
 // 在iframe中执行的脚本
-import { action } from "../utils/const";
+import { action } from "src/utils/const";
 
 function captureIframe() {
   const canvas = document.createElement("canvas");

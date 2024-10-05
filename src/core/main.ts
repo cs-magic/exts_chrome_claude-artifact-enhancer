@@ -1,7 +1,7 @@
 import { Message } from "@/types/message";
-import { action, IFRAME_URL } from "../utils/const";
-import { downloadImage } from "../utils/downloadImage";
-import { handleArtifact } from "../utils/handleArtifact";
+import { action, IFRAME_URL } from "src/utils/const";
+import { downloadImage } from "src/utils/downloadImage";
+import { handleArtifact } from "src/utils/handleArtifact";
 
 console.log("Main script loaded");
 

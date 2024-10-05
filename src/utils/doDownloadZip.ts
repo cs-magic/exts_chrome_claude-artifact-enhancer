@@ -1,4 +1,4 @@
-import { svgString2zip } from "./svgString2zip";
+import { svgString2zip } from "src/utils/svgString2zip";
 
 export const doDownloadZip = () => {
   const fileName = document.querySelector(".fixed .sticky h3").textContent;
