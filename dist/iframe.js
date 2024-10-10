@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] = self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] || []).push([["iframe"],{
 
-/***/ 461:
+/***/ 347:
 /*!***********************!*\
   !*** ./src/config.ts ***!
   \***********************/
@@ -22,7 +22,7 @@ const config = {
     png: {
         export: {
             ppi: {
-                default: 320,
+                default: 640, // svg 在 320 导出不够
             },
         },
     },
@@ -31,16 +31,16 @@ const config = {
 
 /***/ }),
 
-/***/ 927:
+/***/ 501:
 /*!****************************!*\
   !*** ./src/core/iframe.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cs_magic_common_frontend_element2image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/element2image */ 589);
-/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/const */ 498);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 461);
+/* harmony import */ var _cs_magic_common_frontend_element2image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/element2image */ 877);
+/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/const */ 848);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 347);
 
 
 
@@ -77,7 +77,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 /***/ }),
 
-/***/ 498:
+/***/ 848:
 /*!****************************!*\
   !*** ./src/utils/const.ts ***!
   \****************************/
@@ -125,10 +125,10 @@ const lucideArrowBigDownDashSvgString = `<svg xmlns="http://www.w3.org/2000/svg"
 
 /***/ }),
 
-/***/ 589:
-/*!************************************************************!*\
-  !*** ../../packages_frontend/common/dist/element2image.js ***!
-  \************************************************************/
+/***/ 877:
+/*!******************************************************************!*\
+  !*** ../../../../packages/frontend-common/dist/element2image.js ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -136,9 +136,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   element2image: () => (/* binding */ element2image),
 /* harmony export */   svgElement2svgString: () => (/* binding */ svgElement2svgString)
 /* harmony export */ });
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2canvas */ 317);
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2canvas */ 427);
 /* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var modern_screenshot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! modern-screenshot */ 615);
+/* harmony import */ var modern_screenshot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! modern-screenshot */ 193);
 
  // Function to get the maximum width based on viewport
 const svgElement2svgString = (svg) => new XMLSerializer().serializeToString(svg);
@@ -155,7 +155,7 @@ function getMaxWidth() {
     }
     return window.innerWidth; // For smaller screens, use full width
 }
-const element2image = async (element, { approach = "modern-screenshot", filename = "screenshot", backgroundColor = "white", format = "jpeg", }) => {
+const element2image = async (element, { approach = "modern-screenshot", filename = "screenshot", backgroundColor = "white", format = "jpeg", } = {}) => {
     console.log("-- element2png start");
     let data;
     const maxWidth = getMaxWidth();
@@ -197,7 +197,7 @@ const element2image = async (element, { approach = "modern-screenshot", filename
         case "modern-screenshot":
             data = await (0,modern_screenshot__WEBPACK_IMPORTED_MODULE_1__.domToDataUrl)(element, {
                 scale: 2,
-                quality: 0.7,
+                quality: 0.9,
                 backgroundColor: backgroundColor,
             });
             break;
@@ -215,7 +215,7 @@ const element2image = async (element, { approach = "modern-screenshot", filename
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["vendors"], () => (__webpack_exec__(927)));
+/******/ __webpack_require__.O(0, ["vendors"], () => (__webpack_exec__(501)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

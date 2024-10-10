@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] = self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] || []).push([["main"],{
 
-/***/ 461:
+/***/ 347:
 /*!***********************!*\
   !*** ./src/config.ts ***!
   \***********************/
@@ -22,7 +22,7 @@ const config = {
     png: {
         export: {
             ppi: {
-                default: 320,
+                default: 640, // svg 在 320 导出不够
             },
         },
     },
@@ -31,16 +31,16 @@ const config = {
 
 /***/ }),
 
-/***/ 902:
+/***/ 912:
 /*!**************************!*\
   !*** ./src/core/main.ts ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 498);
-/* harmony import */ var _utils_downloadImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/downloadImage */ 508);
-/* harmony import */ var _utils_handleArtifact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/handleArtifact */ 357);
+/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 848);
+/* harmony import */ var _utils_downloadImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/downloadImage */ 918);
+/* harmony import */ var _utils_handleArtifact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/handleArtifact */ 39);
 
 
 
@@ -73,7 +73,7 @@ observer.observe(document.body, { subtree: true, childList: true });
 
 /***/ }),
 
-/***/ 498:
+/***/ 848:
 /*!****************************!*\
   !*** ./src/utils/const.ts ***!
   \****************************/
@@ -121,7 +121,7 @@ const lucideArrowBigDownDashSvgString = `<svg xmlns="http://www.w3.org/2000/svg"
 
 /***/ }),
 
-/***/ 102:
+/***/ 616:
 /*!********************************!*\
   !*** ./src/utils/doCopyPng.ts ***!
   \********************************/
@@ -131,8 +131,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   doCopyPng: () => (/* binding */ doCopyPng)
 /* harmony export */ });
-/* harmony import */ var _cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/blob2clipboard */ 443);
-/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 567);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config */ 347);
+/* harmony import */ var _cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cs-magic/common-frontend/blob2clipboard */ 11);
+/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 759);
+
 
 
 const doCopyPng = async () => {
@@ -140,15 +142,15 @@ const doCopyPng = async () => {
     const svgString = window.svgString;
     if (!svgString)
         return alert("no svgString now");
-    const svgBlob = (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__.svgString2svgBlob)(svgString);
-    const pngBlog = await (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_1__.svgBlob2pngBlob)(svgBlob);
-    void (0,_cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_0__.blob2clipboard)(pngBlog);
+    const svgBlob = (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_2__.svgString2svgBlob)(svgString);
+    const pngBlog = await (0,_cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_2__.svgBlob2pngBlob)(svgBlob, _config__WEBPACK_IMPORTED_MODULE_0__.config.png.export.ppi.default);
+    void (0,_cs_magic_common_frontend_blob2clipboard__WEBPACK_IMPORTED_MODULE_1__.blob2clipboard)(pngBlog);
 };
 
 
 /***/ }),
 
-/***/ 389:
+/***/ 75:
 /*!************************************!*\
   !*** ./src/utils/doDownloadZip.ts ***!
   \************************************/
@@ -158,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   doDownloadZip: () => (/* binding */ doDownloadZip)
 /* harmony export */ });
-/* harmony import */ var _svgString2zip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./svgString2zip */ 799);
+/* harmony import */ var _svgString2zip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./svgString2zip */ 505);
 
 const doDownloadZip = () => {
     const fileName = document.querySelector(".fixed .sticky h3").textContent;
@@ -173,7 +175,7 @@ const doDownloadZip = () => {
 
 /***/ }),
 
-/***/ 508:
+/***/ 918:
 /*!************************************!*\
   !*** ./src/utils/downloadImage.ts ***!
   \************************************/
@@ -195,7 +197,7 @@ function downloadImage(imageUrl, fileName) {
 
 /***/ }),
 
-/***/ 357:
+/***/ 39:
 /*!*************************************!*\
   !*** ./src/utils/handleArtifact.ts ***!
   \*************************************/
@@ -205,11 +207,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleArtifact: () => (/* binding */ handleArtifact)
 /* harmony export */ });
-/* harmony import */ var _wait_parent_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./wait-parent-element */ 52);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ 498);
-/* harmony import */ var _doCopyPng__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./doCopyPng */ 102);
-/* harmony import */ var _doDownloadZip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./doDownloadZip */ 389);
-/* harmony import */ var _cs_magic_common_frontend_str2ele__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @cs-magic/common-frontend/str2ele */ 491);
+/* harmony import */ var _wait_parent_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./wait-parent-element */ 794);
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ 848);
+/* harmony import */ var _doCopyPng__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./doCopyPng */ 616);
+/* harmony import */ var _doDownloadZip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./doDownloadZip */ 75);
+/* harmony import */ var _cs_magic_common_frontend_str2ele__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @cs-magic/common-frontend/str2ele */ 307);
 
 
 
@@ -261,7 +263,7 @@ ${svgString}
 
 /***/ }),
 
-/***/ 799:
+/***/ 505:
 /*!************************************!*\
   !*** ./src/utils/svgString2zip.ts ***!
   \************************************/
@@ -271,10 +273,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   svgString2zip: () => (/* binding */ svgString2zip)
 /* harmony export */ });
-/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 567);
-/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jszip */ 842);
+/* harmony import */ var _cs_magic_common_frontend_svgString2pngBlob__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cs-magic/common-frontend/svgString2pngBlob */ 759);
+/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jszip */ 187);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 461);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ 347);
 
 
 
@@ -302,7 +304,7 @@ async function svgString2zip(svgString, fileName, ppi = _config__WEBPACK_IMPORTE
 
 /***/ }),
 
-/***/ 52:
+/***/ 794:
 /*!******************************************!*\
   !*** ./src/utils/wait-parent-element.ts ***!
   \******************************************/
@@ -330,10 +332,10 @@ const waitParentElement = () => new Promise((resolve) => {
 
 /***/ }),
 
-/***/ 443:
-/*!*************************************************************!*\
-  !*** ../../packages_frontend/common/dist/blob2clipboard.js ***!
-  \*************************************************************/
+/***/ 11:
+/*!*******************************************************************!*\
+  !*** ../../../../packages/frontend-common/dist/blob2clipboard.js ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -356,10 +358,10 @@ async function blob2clipboard(blob) {
 
 /***/ }),
 
-/***/ 491:
-/*!******************************************************!*\
-  !*** ../../packages_frontend/common/dist/str2ele.js ***!
-  \******************************************************/
+/***/ 307:
+/*!************************************************************!*\
+  !*** ../../../../packages/frontend-common/dist/str2ele.js ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -378,10 +380,10 @@ function str2ele(str) {
 
 /***/ }),
 
-/***/ 567:
-/*!****************************************************************!*\
-  !*** ../../packages_frontend/common/dist/svgString2pngBlob.js ***!
-  \****************************************************************/
+/***/ 759:
+/*!**********************************************************************!*\
+  !*** ../../../../packages/frontend-common/dist/svgString2pngBlob.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -389,6 +391,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   svgBlob2pngBlob: () => (/* binding */ svgBlob2pngBlob),
 /* harmony export */   svgString2svgBlob: () => (/* binding */ svgString2svgBlob)
 /* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ 76);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+
 const svgString2svgBlob = (svgString) => new Blob([svgString], { type: "image/svg+xml" });
 function svgBlob2pngBlob(svgBlob, ppi = 320) {
     return new Promise((resolve, reject) => {
@@ -400,6 +405,11 @@ function svgBlob2pngBlob(svgBlob, ppi = 320) {
             const scale = ppi / 72; // Default PPI for SVG is 72
             canvas.width = img.width * scale;
             canvas.height = img.height * scale;
+            console.log({
+                image: lodash__WEBPACK_IMPORTED_MODULE_0___default().pick(img, ["width", "height"]),
+                canvas: lodash__WEBPACK_IMPORTED_MODULE_0___default().pick(img, ["height", "width"]),
+                scale: scale,
+            });
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             canvas.toBlob((blob) => {
                 URL.revokeObjectURL(url);
@@ -420,7 +430,7 @@ function svgBlob2pngBlob(svgBlob, ppi = 320) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["vendors"], () => (__webpack_exec__(902)));
+/******/ __webpack_require__.O(0, ["vendors"], () => (__webpack_exec__(912)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

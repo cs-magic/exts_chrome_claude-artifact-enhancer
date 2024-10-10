@@ -1,6 +1,6 @@
 const CopyPlugin = require("copy-webpack-plugin");
 
-const baseConfig = require("../../tools/webpack/webpack.base.config");
+const baseConfig = require("../../../../packages/tools_webpack/webpack.base.config");
 
 baseConfig.entry = {
   main: "./src/core/main.ts",

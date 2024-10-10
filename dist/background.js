@@ -1,14 +1,14 @@
 "use strict";
 (self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] = self["webpackChunk_cs_magic_exts_chrome_claude_artifact_enhancer"] || []).push([["background"],{
 
-/***/ 351:
+/***/ 553:
 /*!********************************!*\
   !*** ./src/core/background.ts ***!
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 498);
+/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/const */ 848);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // 这个已经不需要了，因为直接在前端就可以拿到
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 /***/ }),
 
-/***/ 498:
+/***/ 848:
 /*!****************************!*\
   !*** ./src/utils/const.ts ***!
   \****************************/
@@ -78,7 +78,7 @@ const lucideArrowBigDownDashSvgString = `<svg xmlns="http://www.w3.org/2000/svg"
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ var __webpack_exports__ = (__webpack_exec__(351));
+/******/ var __webpack_exports__ = (__webpack_exec__(553));
 /******/ }
 ]);
 //# sourceMappingURL=background.js.map

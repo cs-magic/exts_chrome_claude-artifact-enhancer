@@ -1,6 +1,6 @@
 import { getIframe } from "src/utils/get-iframe";
 import html2canvas from "html2canvas";
-import { str2ele } from "@cs-magic/common-frontend/dist/str2ele";
+import { str2ele } from "@cs-magic/common-frontend/str2ele";
 
 export const downloadViaCanvas = () => {
   const iframe = getIframe();

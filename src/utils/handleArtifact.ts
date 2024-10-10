@@ -1,13 +1,13 @@
-import { waitParentElement } from "src/utils/wait-parent-element";
+import { waitParentElement } from "./wait-parent-element";
 import {
   ARTIFACT_COPY_PNG_ID,
   ARTIFACT_DOWNLOAD_ALL_ID,
   lucideArrowBigDownDashSvgString,
   lucideImagesSvgString,
-} from "src/utils/const";
-import { doCopyPng } from "src/utils/doCopyPng";
-import { doDownloadZip } from "src/utils/doDownloadZip";
-import { str2ele } from "@cs-magic/common-frontend/dist/str2ele";
+} from "./const";
+import { doCopyPng } from "./doCopyPng";
+import { doDownloadZip } from "./doDownloadZip";
+import { str2ele } from "@cs-magic/common-frontend/str2ele";
 
 export const handleArtifact = async () => {
   const parentElement = await waitParentElement();

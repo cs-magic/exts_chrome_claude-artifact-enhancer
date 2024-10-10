@@ -9,7 +9,7 @@ export const config = {
   png: {
     export: {
       ppi: {
-        default: 320,
+        default: 640, // svg 在 320 导出不够
       },
     },
   },

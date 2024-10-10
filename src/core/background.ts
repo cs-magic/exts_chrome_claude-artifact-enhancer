@@ -1,4 +1,4 @@
-import { action } from "src/utils/const";
+import { action } from "../utils/const";
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // 这个已经不需要了，因为直接在前端就可以拿到
