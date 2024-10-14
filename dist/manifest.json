@@ -1,6 +1,6 @@
 {
   "name": "claude-artifact-enhancer",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "manifest_version": 3,
   "description": "Your Helpful Claude Artifact Enhancer",
   "author": "南川 <mark@cs-magic.com>",
