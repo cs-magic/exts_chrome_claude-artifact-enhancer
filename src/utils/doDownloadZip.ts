@@ -5,7 +5,7 @@ export const doDownloadZip = () => {
   const svgString = window.svgString;
   if (!svgString) return alert("no svgString now");
 
-  svgString2zip(svgString, `${fileName}.png`)
+  svgString2zip(svgString, fileName)
     .then((downloadId) =>
       console.log("File saved with download ID:", downloadId),
     )

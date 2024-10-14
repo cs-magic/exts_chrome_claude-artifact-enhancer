@@ -167,7 +167,7 @@ const doDownloadZip = () => {
     const svgString = window.svgString;
     if (!svgString)
         return alert("no svgString now");
-    (0,_svgString2zip__WEBPACK_IMPORTED_MODULE_0__.svgString2zip)(svgString, `${fileName}.png`)
+    (0,_svgString2zip__WEBPACK_IMPORTED_MODULE_0__.svgString2zip)(svgString, fileName)
         .then((downloadId) => console.log("File saved with download ID:", downloadId))
         .catch((error) => console.error("Error:", error));
 };
