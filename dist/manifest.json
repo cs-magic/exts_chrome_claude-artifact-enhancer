@@ -1,13 +1,11 @@
 {
   "name": "claude-artifact-enhancer",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "manifest_version": 3,
   "description": "Your Helpful Claude Artifact Enhancer",
   "author": "南川 <mark@cs-magic.com>",
   "permissions": [
-    "activeTab",
-    "scripting",
-    "downloads"
+
   ],
   "host_permissions": [
     "https://claude.ai/*",
@@ -15,9 +13,9 @@
     "https://api.claude.ai/*"
   ],
   "icons": {
-    "16": "assets/logo.png",
-    "48": "assets/logo.png",
-    "128": "assets/logo.png"
+    "16": "assets/logo_128x128.png",
+    "48": "assets/logo_128x128.png",
+    "128": "assets/logo_128x128.png"
   },
   "background": {
     "service_worker": "background.js"
