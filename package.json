@@ -6,7 +6,6 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
-    "@cs-magic/tools": "workspace:^",
     "@types/chrome": "^0.0.270",
     "@types/html2canvas": "^1.0.0",
     "jszip": "^3.10.1",
