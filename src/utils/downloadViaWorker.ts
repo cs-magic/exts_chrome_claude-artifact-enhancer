@@ -4,7 +4,7 @@ export const downloadViaWorker = () => {
   function captureIframe() {
     const iframe = document.querySelector(
       "iframe.w-full.h-full",
-    ) as HTMLIFrameElement;
+    );
     const iframeUrl = iframe.src;
     const width = iframe.clientWidth;
     const height = iframe.clientHeight;

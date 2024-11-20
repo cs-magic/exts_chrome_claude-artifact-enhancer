@@ -3,6 +3,7 @@ import {
   svgString2svgBlob,
 } from "@cs-magic/common-frontend/svgString2pngBlob";
 import JSZip from "jszip";
+
 import { config } from "../config";
 
 export async function svgString2zip(

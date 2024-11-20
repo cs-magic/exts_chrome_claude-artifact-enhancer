@@ -1,9 +1,10 @@
-import { config } from "@/config";
 import { blob2clipboard } from "@cs-magic/common-frontend/blob2clipboard";
 import {
   svgBlob2pngBlob,
   svgString2svgBlob,
 } from "@cs-magic/common-frontend/svgString2pngBlob";
+
+import { config } from "@/config";
 
 export const doCopyPng = async () => {
   document.querySelector(".fixed .sticky h3").textContent;

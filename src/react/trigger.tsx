@@ -12,6 +12,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@cs-magic/shadcn/ui/dropdown-menu";
+import CSMagicBanner from "assets/branding/neurora/cs-magic_banner_white.jpg";
 import {
   ImageDown,
   Images,
@@ -21,9 +22,8 @@ import {
   PlusCircle,
   UserPlus,
 } from "lucide-react";
-import CSMagicBanner from "assets/branding/neurora/cs-magic_banner_white.jpg";
-import { doDownloadZip } from "src/utils/doDownloadZip";
 import { doCopyPng } from "src/utils/doCopyPng";
+import { doDownloadZip } from "src/utils/doDownloadZip";
 
 console.log({ CSMagicBanner });
 
@@ -121,9 +121,9 @@ export function Trigger() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <img
-            src={chrome.runtime.getURL("images/cs-magic_banner_white.jpg")}
-            className={"w-full h-auto"}
             alt={"cs-magic"}
+            className={"w-full h-auto"}
+            src={chrome.runtime.getURL("images/cs-magic_banner_white.jpg")}
           />
         </DropdownMenuItem>
       </DropdownMenuContent>

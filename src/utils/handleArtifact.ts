@@ -1,4 +1,5 @@
-import { waitParentElement } from "./wait-parent-element";
+import { str2ele } from "@cs-magic/common-frontend/str2ele";
+
 import {
   ARTIFACT_COPY_PNG_ID,
   ARTIFACT_DOWNLOAD_ALL_ID,
@@ -7,7 +8,8 @@ import {
 } from "./const";
 import { doCopyPng } from "./doCopyPng";
 import { doDownloadZip } from "./doDownloadZip";
-import { str2ele } from "@cs-magic/common-frontend/str2ele";
+import { waitParentElement } from "./wait-parent-element";
+
 
 export const handleArtifact = async () => {
   const parentElement = await waitParentElement();
@@ -19,7 +21,7 @@ export const handleArtifact = async () => {
     onClick: () => void,
     size = 16,
   ) => {
-    let ele = parentElement.querySelector(`#${id}`);
+    const ele = parentElement.querySelector(`#${id}`);
     if (ele) return;
     const buttonElement = str2ele(`<button 
 id="${id}"
@@ -50,7 +52,7 @@ ${svgString}
     buttonElement.onclick = onClick;
     parentElement.insertAdjacentElement("afterbegin", buttonElement);
 
-    const svg = parentElement.querySelector("svg") as SVGSVGElement;
+    const svg = parentElement.querySelector("svg");
     svg.setAttribute("width", size.toString());
     svg.setAttribute("height", size.toString());
   };

@@ -1,5 +1,5 @@
-import { getIframe } from "src/utils/get-iframe";
 import { displayOrDownloadScreenshot } from "src/utils/displayOrDownloadScreenshot";
+import { getIframe } from "src/utils/get-iframe";
 
 export const downloadViaSVG = () => {
   const iframe = getIframe();

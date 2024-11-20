@@ -1,6 +1,6 @@
-import { getIframe } from "src/utils/get-iframe";
-import html2canvas from "html2canvas";
 import { str2ele } from "@cs-magic/common-frontend/str2ele";
+import html2canvas from "html2canvas";
+import { getIframe } from "src/utils/get-iframe";
 
 export const downloadViaCanvas = () => {
   const iframe = getIframe();
@@ -26,7 +26,7 @@ export const downloadViaCanvas = () => {
     useCORS: true,
   }).then((canvas) => {
     console.log("-- onrendered");
-    let a = document.createElement("a");
+    const a = document.createElement("a");
     // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
     a.href = canvas
       .toDataURL("image/jpeg")
